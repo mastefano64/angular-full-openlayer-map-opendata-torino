@@ -1,0 +1,16 @@
+
+.buttonsicon {
+    margin-bottom: 10px;
+}
+
+.buttonicon {
+    float: left;   
+    background-color: #F8F8F8;    
+}
+
+.buttonicon img {
+    border: lightgrey solid 1px;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+}

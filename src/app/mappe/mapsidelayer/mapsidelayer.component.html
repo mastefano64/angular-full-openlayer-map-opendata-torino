@@ -1,0 +1,37 @@
+<div>
+    <h4>LAYERS</h4>
+    <h5>BASE MAP</h5>
+    <div>
+        <mat-form-field class="formfullwidth">
+            <mat-select [(value)]="layerId" (selectionChange)="onBaseLayerChange()">
+                <mat-option *ngFor="let layer of maplayers.baseLayers" [value]="layer.id">
+                    {{ layer.displayName }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <h5>LAYER-1</h5>
+    <div>
+        <div *ngFor="let layer of maplayers.wmsLayers1">
+            <input type="checkbox" [(ngModel)]="layer.visible" (change)="onLayerChange(layer)" />
+            {{ layer.displayName }}
+        </div>
+    </div>
+
+    <h5>LAYER-2</h5>
+    <div>
+        <div *ngFor="let layer of maplayers.wmsLayers2">
+            <input type="checkbox" [(ngModel)]="layer.visible" (change)="onLayerChange(layer)" />
+            {{ layer.displayName }}
+        </div>
+    </div>
+
+    <h5>LAYER-3</h5>
+    <div>
+        <div *ngFor="let layer of maplayers.wfsLayers">
+            <input type="checkbox" [(ngModel)]="layer.visible" (change)="onLayerChange(layer)" />
+            {{ layer.displayName }}
+        </div>
+    </div>
+</div>

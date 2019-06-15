@@ -1,0 +1,52 @@
+<div>
+    <h4>DIRECTION</h4>
+    <app-routebutton routemode="d" (modechanged)="onModeChanged($event)"></app-routebutton>
+
+    <mat-form-field>
+        <mat-label>Departure</mat-label>
+        <mat-icon matPrefix (click)="onGeolocateDep()">language</mat-icon>
+        <input matInput [(ngModel)]="addrdep" (focus)="onFocusAddrdep()" #refAddrdep="ngModel">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Destination</mat-label>
+        <mat-icon matPrefix (click)="onGeolocateArr()">language</mat-icon>
+        <input matInput [(ngModel)]="addrarr" (focus)="onFocusAddrarr()" #refAddrarr="ngModel">
+    </mat-form-field>
+    <div>
+        <button mat-raised-button color="primary" (click)="onTrace()">
+            <mat-icon>search</mat-icon>Directions
+        </button>
+        &nbsp;&nbsp;
+        <button mat-raised-button (click)="onClear()">Clear</button>
+    </div>
+
+    <div class="listresult">
+        <div *ngIf="focusaddrdep === true">
+            <h5>DEPARTURE</h5>
+            <div class="listaddr">
+                <div class="listitem" *ngFor="let location of locationsdep" (click)="onSelectDep(location)">
+                    {{ location.address }}
+                </div>
+            </div>
+        </div>
+        <div *ngIf="focusaddrarr === true">
+            <h5>ARRIVE</h5>
+            <div class="listaddr">
+                <div class="listitem" *ngFor="let location of locationsarr" (click)="onSelectArr(location)">
+                    {{ location.address }}
+                </div>
+            </div>
+        </div>
+        <div *ngIf="focusroute === true">
+            <h5>ROUTE</h5>
+            <div class="listroute">
+                <div class="listitem" *ngFor="let route of routeslegs" (click)="onRouteTrk(route)">
+                    <div>
+                        <div class="legshead">{{ route.index }}) {{ route.legsdist }} Km.</div>
+                        <div class="legsrow">{{ route.instruction }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

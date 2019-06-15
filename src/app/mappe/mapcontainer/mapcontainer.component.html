@@ -1,0 +1,23 @@
+<mat-sidenav-container hasBackdrop="false">
+    <mat-sidenav class="boxsidenav" [(opened)]="opened" position="start" #start>
+        <div [hidden]="panel !== 'pane1'">
+            <app-mapsidelayer [maplayers]="maplayers" (layerchange)="onLayerChange($event)"></app-mapsidelayer>
+        </div>
+        <div [hidden]="panel !== 'pane2'">
+            <app-mapsideroute (movemapfix)="onMoveMapFix($event)" (movemaptrk)="onMoveMapTrk($event)" 
+                        (traceroute)="onTraceRoute($event)" (clearmap)="onClearMap()">
+            </app-mapsideroute>
+        </div>
+    </mat-sidenav>
+    <div class="containerheight">
+        <div class="menubutton">
+            <button mat-icon-button (click)="start.toggle()" (click)="onToggle('pane1')">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <button mat-icon-button (click)="start.toggle()" (click)="onToggle('pane2')">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+        <app-mapsurface [maplayers]="maplayers"></app-mapsurface>
+    </div>
+</mat-sidenav-container>
