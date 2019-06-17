@@ -50,7 +50,7 @@ export class MapSurfaceComponent implements AfterViewInit {
   private bingkey = 'your-bing-map-key';
 
   // tslint:disable-next-line:max-line-length
-  private wfsurl = 'http://geomap.reteunitaria.piemonte.it/ws/siccms/coto-01/wfsg01/wfs_sicc102_farmacie?service=WFS&version=1.1.0&request=GetFeature&typename=FarmacieComu&srsname=EPSG%3A3857';
+  private wfsurl = 'https://geomap.reteunitaria.piemonte.it/ws/siccms/coto-01/wfsg01/wfs_sicc102_farmacie?service=WFS&version=1.1.0&request=GetFeature&typename=FarmacieComu&srsname=EPSG%3A3857';
 
   constructor(private http: HttpClient) {}
 
@@ -308,9 +308,9 @@ export class MapSurfaceComponent implements AfterViewInit {
     const prop = feature.getProperties();
     const isnotturna = (prop.notturna === 'NO') ? true : false;
     if (isnotturna === true) {
-        iconfile = '/assets/images/farmacia01.png';
+        iconfile = './assets/images/farmacia01.png';
     } else {
-        iconfile = '/assets/images/farmacia02.png';
+        iconfile = './assets/images/farmacia02.png';
     }
     return [
         new Style({
